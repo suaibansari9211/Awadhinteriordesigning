@@ -1,53 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awadh Interior Designing</title>
-    <!-- Minimalist, professional font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <!-- Minimal, professional font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&display=swap" rel="stylesheet">
     <style>
+        /* Blurred, beautiful interior background */
+        .bg-blur {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(10px);
+            -webkit-filter: blur(10px);
+            pointer-events: none;
+        }
+        /* Subtle dark overlay for contrast */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.38);
+            z-index: -1;
+            pointer-events: none;
+        }
         body {
+            position: relative;
             min-height: 100vh;
-            margin: 0;
-            padding: 0;
+            background: transparent;
             font-family: 'Montserrat', Arial, sans-serif;
-            background: #f9f9f9;
-            color: #222;
+            color: #fff;
         }
         .glass-section, header, nav, footer {
-            background: rgba(255,255,255,0.85);
+            background: rgba(0,0,0,0.28);
             border-radius: 18px;
             border: 1.5px solid #FFD700;
             margin: 2rem auto 2rem auto;
             padding: 2rem;
             max-width: 1100px;
             box-shadow: 0 2px 24px #FFD70022;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             position: relative;
         }
         header {
             text-align: center;
             padding: 2.5rem 0 1.5rem 0;
             border-bottom: 2px solid #FFD700;
-            background: rgba(255,255,255,0.92);
+            background: rgba(0,0,0,0.32);
         }
         .main-title {
             font-family: 'Montserrat', Arial, sans-serif;
             font-size: 3.3rem;
-            font-weight: 700;
-            color: #222;
+            font-weight: 600;
+            color: #fff;
             letter-spacing: 0.07em;
             margin: 0;
             line-height: 1.1;
-            text-shadow: 0 2px 20px #FFD70044, 0 1px 0 #fff;
+            text-shadow: 0 2px 20px #000a, 0 1px 0 #FFD700;
         }
         header p {
             margin: 0.8rem 0 0 0;
             font-size: 1.2rem;
-            color: #bfa14a;
+            color: #FFD700;
             font-weight: 400;
         }
         nav {
@@ -55,18 +72,18 @@
             padding: 0.7rem 0;
             border-bottom: 1px solid #FFD700;
             margin: 2rem auto 0 auto;
-            background: rgba(255,255,255,0.92);
+            background: rgba(0,0,0,0.22);
         }
         nav a {
-            color: #bfa14a;
+            color: #FFD700;
             text-decoration: none;
             margin: 0 1.5rem;
             font-weight: 600;
             font-size: 1.1rem;
             transition: color 0.2s;
         }
-        nav a:hover { color: #FFD700; }
-        h2, h3 { color: #bfa14a; margin-top: 0; }
+        nav a:hover { color: #fff; }
+        h2, h3 { color: #FFD700; margin-top: 0; }
         ul { padding-left: 1.3rem; }
         .card-row {
             display: flex;
@@ -85,9 +102,7 @@
             color: #fff;
             font-weight: 600;
             position: relative;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: rgba(0,0,0,0.37);
             border: 1.5px solid #FFD700;
             box-shadow: 0 2px 12px #FFD70022;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -97,20 +112,12 @@
             justify-content: flex-end;
             min-height: 220px;
         }
-        .service-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            background: rgba(0,0,0,0.33);
-            z-index: 0;
-        }
         .service-card h3,
         .service-card p {
             position: relative;
             z-index: 1;
             color: #fff;
-            text-shadow: 0 2px 12px #222a;
+            text-shadow: 0 2px 12px #000a;
         }
         .service-card:hover {
             transform: scale(1.05);
@@ -151,13 +158,13 @@
         }
         .gallery-card:hover img { transform: scale(1.08); }
         footer {
-            color: #bfa14a;
+            color: #FFD700;
             text-align: center;
             padding: 1rem 0;
             border-top: 2px solid #FFD700;
             font-size: 1rem;
             margin: 2rem auto 0 auto;
-            background: rgba(255,255,255,0.92);
+            background: rgba(0,0,0,0.22);
         }
         #lightbox-overlay {
             position: fixed;
@@ -192,6 +199,9 @@
     </style>
 </head>
 <body>
+    <div class="bg-blur"></div>
+    <div class="bg-overlay"></div>
+
     <div id="lightbox-overlay">
         <img src="" alt="Expanded Image">
     </div>
@@ -222,19 +232,19 @@
         <section id="services" class="glass-section">
             <h2>Our Services</h2>
             <div class="card-row">
-                <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80');">
+                <div class="service-card">
                     <h3>Residential & Commercial</h3>
                     <p>Unique interior design for homes and offices.</p>
                 </div>
-                <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80');">
+                <div class="service-card">
                     <h3>False Ceiling & PVC Paneling</h3>
                     <p>Modern ceiling and wall solutions.</p>
                 </div>
-                <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1503389152951-9c3d8b6e1caa?auto=format&fit=crop&w=600&q=80');">
+                <div class="service-card">
                     <h3>Modular Kitchens & Wardrobes</h3>
                     <p>Smart, space-saving modular designs.</p>
                 </div>
-                <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=600&q=80');">
+                <div class="service-card">
                     <h3>Custom Furniture</h3>
                     <p>Made-to-order furniture for any space.</p>
                 </div>
