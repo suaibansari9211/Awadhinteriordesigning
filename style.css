@@ -1,24 +1,25 @@
-/* BLURRED BACKGROUND IMAGE */
+/* Blurred, stretched, and dimmed background image */
 .bg-blur {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: -2;
-    background: url('images/pvc_designs-1.jpg') center center/cover no-repeat;
-    filter: blur(48px); /* extremely strong blur */
+    background: url('images/pvc_designs-1.jpg') no-repeat center center fixed;
+    background-size: 100% 100%; /* Stretches image to fill, even if small */
+    filter: blur(48px); /* Extreme blur */
     -webkit-filter: blur(48px);
     pointer-events: none;
 }
 
-/* SEMI-TRANSPARENT WHITE OVERLAY TO DIM THE BACKGROUND */
+/* White overlay to dim the background */
 .bg-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(255,255,255,0.65); /* adjust for more/less dim */
+    background: rgba(255,255,255,0.7); /* Adjust for more/less dim */
     z-index: -1;
     pointer-events: none;
 }
 
-/* MAIN CONTENT */
+/* Main content above background */
 body {
     position: relative;
     min-height: 100vh;
@@ -27,7 +28,7 @@ body {
     color: #9c7e36;
 }
 
-/* GLASS/ELEGANT FOREGROUND SECTIONS */
+/* Example of glassmorphism for sections */
 .glass-section {
     background: rgba(255,255,255,0.85);
     border-radius: 18px;
@@ -39,3 +40,5 @@ body {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
+
+/* ...rest of your CSS... */
