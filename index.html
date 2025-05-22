@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awadh Interior Designing</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Unique 3D Font for Title -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <style>
         /* Blurred, stretched, and dimmed background image */
         .bg-blur {
@@ -21,7 +22,7 @@
         .bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(255,255,255,0.7); /* Adjust for more/less dim */
+            background: rgba(255,255,255,0.7);
             z-index: -1;
             pointer-events: none;
         }
@@ -45,17 +46,34 @@
         }
         header {
             background: rgba(255,255,255,0.85);
-            color: #FFD700;
             text-align: center;
             padding: 2rem 0 1rem 0;
             border-bottom: 2px solid #FFD700;
             backdrop-filter: blur(4px);
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #9c7e36;
-            text-shadow: 0 2px 16px #FFD70033;
+        .main-3d-title {
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            color: #FFD700; /* Gold */
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.1;
+            /* 3D effect with multiple shadows */
+            text-shadow:
+                0 1px 0 #bfa14a,
+                0 2px 0 #bfa14a,
+                0 3px 0 #bfa14a,
+                0 4px 0 #bfa14a,
+                0 5px 15px #8a6d1d,
+                0 8px 30px #fffbe6;
+            transform: perspective(400px) rotateX(8deg);
+        }
+        @media (max-width: 700px) {
+            .main-3d-title {
+                font-size: 2.2rem;
+            }
         }
         header p {
             margin: 0.5rem 0 0 0;
@@ -202,7 +220,7 @@
     </div>
 
     <header>
-        <h1>Awadh Interior Designing</h1>
+        <h1 class="main-3d-title">AWADH INTERIOR DESIGNING</h1>
         <p>Transforming Spaces with Elegance & Innovation</p>
     </header>
     <nav>
@@ -224,91 +242,3 @@
                 <li>Innovative designs for homes, offices, restaurants, and more</li>
             </ul>
         </section>
-        <section id="services" class="glass-section">
-            <h2>Our Services</h2>
-            <div class="card-row">
-                <div class="service-card glass-card">
-                    <h3>Residential & Commercial</h3>
-                    <p>Unique interior design for homes and offices.</p>
-                </div>
-                <div class="service-card glass-card">
-                    <h3>False Ceiling & PVC Paneling</h3>
-                    <p>Modern ceiling and wall solutions.</p>
-                </div>
-                <div class="service-card glass-card">
-                    <h3>Modular Kitchens & Wardrobes</h3>
-                    <p>Smart, space-saving modular designs.</p>
-                </div>
-                <div class="service-card glass-card">
-                    <h3>Custom Furniture</h3>
-                    <p>Made-to-order furniture for any space.</p>
-                </div>
-            </div>
-        </section>
-        <section id="gallery" class="glass-section">
-            <h2>Our Work</h2>
-            <div class="gallery-3d">
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-1.jpg" alt="Ceiling Design 1">
-                </div>
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-2.jpg" alt="Ceiling Design 2">
-                </div>
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-3.jpg" alt="Ceiling Design 3">
-                </div>
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-4.jpg" alt="Ceiling Design 4">
-                </div>          
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-5.jpg" alt="Ceiling Design 5">
-                </div>
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-6.jpg" alt="Ceiling Design 6">
-                </div>
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-7.jpg" alt="Ceiling Design 7">
-                </div>
-                <div class="gallery-card glass-card">
-                    <img src="images/pvc_designs-8.jpg" alt="Ceiling Design 8">
-                </div>
-            </div>
-        </section>
-        <section id="contact" class="glass-section">
-            <h2>Contact Us</h2>
-            <p>
-                <strong>Address:</strong> 596m/391, near Chetna Public Inter College, Adarsh Nagar, Dubagga, Lucknow, Uttar Pradesh 226003<br>
-                <strong>Phone:</strong> +918418944572<br>
-                <strong>Email:</strong> mdzubair7753@gmail.com
-            </p>
-            <p>
-                <strong>Business Hours:</strong> Mon-Sat, 9:00 AM – 7:00 PM<br>
-            </p>
-            <p>
-                <a href="https://maps.app.goo.gl/ayRbrBeFzw9GSDCeA" target="_blank">Find us on Google Maps</a>
-            </p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Awadh Interior Designing. All rights reserved.</p>
-    </footer>
-    <script>
-        // Lightbox functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const lightbox = document.getElementById('lightbox-overlay');
-            const lightboxImage = lightbox.querySelector('img');
-            const galleryImages = document.querySelectorAll('.gallery-card img');
-            galleryImages.forEach(img => {
-                img.addEventListener('click', () => {
-                    lightboxImage.src = img.src;
-                    lightbox.style.display = 'flex';
-                });
-            });
-            lightbox.addEventListener('click', () => {
-                lightbox.style.display = 'none';
-                lightboxImage.src = '';
-            });
-        });
-    </script>
-</body>
-</html>
