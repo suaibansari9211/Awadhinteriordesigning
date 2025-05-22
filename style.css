@@ -1,75 +1,129 @@
-/* Body and background */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    background-color: #101010; /* deep black */
-    color: #e63946; /* vibrant red */
-    overflow-x: hidden;
+    background: #fff;
+    color: #9c7e36; /* Subtle gold for text */
 }
 
-/* Header */
 header {
-    background-color: #1a1a1a; /* dark black */
-    color: #e63946;
-    padding: 2rem 1rem;
+    background: #fff;
+    color: #FFD700;
     text-align: center;
-    box-shadow: 0 2px 8px #e63946aa;
+    padding: 2rem 0 1rem 0;
+    border-bottom: 2px solid #FFD700;
 }
 
-/* Navigation */
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #9c7e36;
+    text-shadow: 0 2px 16px #FFD70033;
+}
+
+header p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.2rem;
+    color: #bfa14a;
+}
+
 nav {
-    background-color: #1a1a1a;
+    background: #fff;
     text-align: center;
     padding: 0.7rem 0;
-    box-shadow: inset 0 -2px 0 #e63946;
+    border-bottom: 1px solid #FFD700;
 }
 
 nav a {
-    color: #e63946;
+    color: #bfa14a;
     text-decoration: none;
     margin: 0 1.5rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.2s;
 }
 
 nav a:hover {
-    color: #f94144; /* brighter red on hover */
+    color: #FFD700;
 }
 
-/* Glass sections with red tint */
-.glass-section {
-    background: rgba(230, 57, 70, 0.1); /* translucent red */
-    border: 1px solid #e63946;
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 2rem auto;
+main {
     max-width: 1100px;
-    box-shadow: 0 0 20px #e63946aa;
-    color: #fff;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-/* Headings */
-h1, h2, h3 {
-    color: #e63946;
-    text-shadow: 0 0 6px #e63946cc;
+.glass-section {
+    background: rgba(255, 215, 0, 0.05); /* very light gold */
+    border: 1.5px solid #FFD700;
+    border-radius: 18px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px #FFD70022;
 }
 
-/* Gallery styling */
-.gallery-3d {
+h2, h3 {
+    color: #bfa14a;
+    margin-top: 0;
+}
+
+ul {
+    padding-left: 1.3rem;
+}
+
+.card-row {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
 }
 
+.service-card {
+    min-width: 220px;
+    max-width: 260px;
+    flex: 1 1 220px;
+    margin: 0.5rem 0;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    text-align: center;
+    background: #fff;
+    border: 1.5px solid #FFD700;
+    box-shadow: 0 2px 12px #FFD70022;
+    transition: transform 0.2s;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 24px #FFD70055;
+}
+
+.gallery-3d {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
 .gallery-card {
     width: 270px;
     height: 180px;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFD700;
+    box-shadow: 0 2px 16px #FFD70033;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
     cursor: pointer;
-    box-shadow: 0 0 12px #e63946bb;
-    transition: transform 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 32px #FFD70066;
 }
 
 .gallery-card img {
@@ -77,35 +131,27 @@ h1, h2, h3 {
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-    transition: transform 0.3s ease;
-}
-
-.gallery-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 24px #f94144cc;
+    transition: transform 0.3s;
 }
 
 .gallery-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
-/* Footer */
 footer {
-    background-color: #1a1a1a;
-    color: #e63946;
+    background: #fff;
+    color: #bfa14a;
     text-align: center;
     padding: 1rem 0;
-    box-shadow: inset 0 2px 0 #e63946;
+    border-top: 2px solid #FFD700;
+    font-size: 1rem;
 }
 
-/* Lightbox overlay */
 #lightbox-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(16, 16, 16, 0.95);
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(255, 255, 255, 0.97);
     display: none;
     justify-content: center;
     align-items: center;
@@ -115,8 +161,24 @@ footer {
 #lightbox-overlay img {
     max-width: 90vw;
     max-height: 90vh;
-    border: 4px solid #e63946;
+    border: 4px solid #FFD700;
     border-radius: 12px;
-    box-shadow: 0 0 30px #e63946cc;
+    box-shadow: 0 0 30px #FFD70088;
+    background: #fff;
     cursor: zoom-out;
+}
+
+@media (max-width: 900px) {
+    .card-row, .gallery-3d {
+        flex-direction: column;
+        align-items: center;
+    }
+    .glass-section {
+        padding: 1.2rem;
+    }
+    .gallery-card {
+        width: 95vw;
+        max-width: 350px;
+        height: 180px;
+    }
 }
