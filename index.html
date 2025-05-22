@@ -7,7 +7,7 @@
     <!-- Minimal, professional font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&display=swap" rel="stylesheet">
     <style>
-        /* Blurred, beautiful interior background */
+        /* Blurred, beautiful background for the whole site */
         .bg-blur {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -18,7 +18,6 @@
             -webkit-filter: blur(10px);
             pointer-events: none;
         }
-        /* Subtle dark overlay for contrast */
         .bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -33,23 +32,37 @@
             font-family: 'Montserrat', Arial, sans-serif;
             color: #fff;
         }
-        .glass-section, header, nav, footer {
-            background: rgba(0,0,0,0.28);
-            border-radius: 18px;
-            border: 1.5px solid #FFD700;
-            margin: 2rem auto 2rem auto;
-            padding: 2rem;
+        .glass-section {
+            position: relative;
+            border-radius: 20px;
+            margin: 2rem auto;
             max-width: 1100px;
+            box-shadow: 0 8px 40px #0004, 0 2px 24px #FFD70033;
+            overflow: hidden;
+            background: none;
+        }
+        .glass-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px) brightness(0.8);
+            -webkit-filter: blur(5px) brightness(0.8);
+            transition: filter 0.3s;
+        }
+        .glass-content {
+            position: relative;
+            z-index: 1;
+            padding: 2.5rem 2rem;
+            background: rgba(0,0,0,0.36);
+            border-radius: 20px;
             box-shadow: 0 2px 24px #FFD70022;
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
-            position: relative;
         }
-        header {
-            text-align: center;
-            padding: 2.5rem 0 1.5rem 0;
-            border-bottom: 2px solid #FFD700;
-            background: rgba(0,0,0,0.32);
+        header.glass-section {
+            margin-top: 2.5rem;
         }
         .main-title {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -59,7 +72,7 @@
             letter-spacing: 0.07em;
             margin: 0;
             line-height: 1.1;
-            text-shadow: 0 2px 20px #000a, 0 1px 0 #FFD700;
+            text-shadow: 0 4px 24px #000a, 0 1px 0 #FFD700;
         }
         header p {
             margin: 0.8rem 0 0 0;
@@ -67,12 +80,16 @@
             color: #FFD700;
             font-weight: 400;
         }
-        nav {
-            text-align: center;
+        nav.glass-section {
             padding: 0.7rem 0;
             border-bottom: 1px solid #FFD700;
-            margin: 2rem auto 0 auto;
-            background: rgba(0,0,0,0.22);
+            background: none;
+            box-shadow: none;
+        }
+        nav .glass-content {
+            background: rgba(0,0,0,0.28);
+            padding: 0.7rem 0;
+            border-radius: 16px;
         }
         nav a {
             color: #FFD700;
@@ -96,32 +113,49 @@
             max-width: 260px;
             flex: 1 1 220px;
             margin: 0.5rem 0;
-            padding: 1.5rem 1rem;
             border-radius: 16px;
             text-align: center;
             color: #fff;
             font-weight: 600;
             position: relative;
-            background: rgba(0,0,0,0.37);
-            border: 1.5px solid #FFD700;
+            overflow: hidden;
             box-shadow: 0 2px 12px #FFD70022;
-            transition: transform 0.2s, box-shadow 0.2s;
-            backdrop-filter: blur(2px);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             min-height: 220px;
         }
-        .service-card h3,
-        .service-card p {
+        .service-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px) brightness(0.85);
+            -webkit-filter: blur(4px) brightness(0.85);
+            z-index: 0;
+            transition: filter 0.3s;
+        }
+        .service-content {
             position: relative;
             z-index: 1;
+            padding: 1.5rem 1rem 1.2rem 1rem;
+            background: rgba(0,0,0,0.38);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #FFD70022;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+        .service-card h3,
+        .service-card p {
             color: #fff;
             text-shadow: 0 2px 12px #000a;
         }
+        .service-card:hover .service-bg {
+            filter: blur(2px) brightness(0.93) saturate(1.1);
+        }
         .service-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 24px #FFD70055;
+            transform: scale(1.04);
+            box-shadow: 0 8px 32px #FFD70066;
         }
         .gallery-3d {
             display: flex;
@@ -157,14 +191,16 @@
             transition: transform 0.3s;
         }
         .gallery-card:hover img { transform: scale(1.08); }
-        footer {
+        footer.glass-section {
+            margin-bottom: 2.5rem;
+        }
+        footer .glass-content {
+            background: rgba(0,0,0,0.18);
             color: #FFD700;
             text-align: center;
             padding: 1rem 0;
-            border-top: 2px solid #FFD700;
             font-size: 1rem;
-            margin: 2rem auto 0 auto;
-            background: rgba(0,0,0,0.22);
+            border-radius: 16px;
         }
         #lightbox-overlay {
             position: fixed;
@@ -195,6 +231,9 @@
                 max-width: 350px;
                 height: 180px;
             }
+            .glass-content {
+                padding: 1.2rem !important;
+            }
         }
     </style>
 </head>
@@ -206,97 +245,144 @@
         <img src="" alt="Expanded Image">
     </div>
 
-    <header>
-        <h1 class="main-title">AWADH INTERIOR DESIGNING</h1>
-        <p>Transforming Spaces with Elegance & Innovation</p>
+    <!-- HEADER -->
+    <header class="glass-section">
+        <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="glass-content">
+            <h1 class="main-title">AWADH INTERIOR DESIGNING</h1>
+            <p>Transforming Spaces with Elegance & Innovation</p>
+        </div>
     </header>
-    <nav>
-        <a href="#about">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
+
+    <!-- NAVIGATION -->
+    <nav class="glass-section">
+        <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="glass-content">
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
+
     <main>
+        <!-- ABOUT US -->
         <section id="about" class="glass-section">
-            <h2>About Us</h2>
-            <p>
-                Established in 2018, Awadh Interior Designing is a leading interior design firm based in Lucknow, specializing in residential and commercial projects. We are dedicated to creating inspiring, functional, and elegant spaces tailored to our clients' visions and budgets. Our team blends contemporary trends with timeless elegance, ensuring every project is unique and client-centric.
-            </p>
-            <ul>
-                <li>Quality assured products and services</li>
-                <li>Timely project delivery</li>
-                <li>Transparent dealings & ethical business policies</li>
-                <li>Innovative designs for homes, offices, restaurants, and more</li>
-            </ul>
+            <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1503389152951-9c3d8b6e1caa?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="glass-content">
+                <h2>About Us</h2>
+                <p>
+                    Established in 2018, Awadh Interior Designing is a leading interior design firm based in Lucknow, specializing in residential and commercial projects. We are dedicated to creating inspiring, functional, and elegant spaces tailored to our clients' visions and budgets. Our team blends contemporary trends with timeless elegance, ensuring every project is unique and client-centric.
+                </p>
+                <ul>
+                    <li>Quality assured products and services</li>
+                    <li>Timely project delivery</li>
+                    <li>Transparent dealings & ethical business policies</li>
+                    <li>Innovative designs for homes, offices, restaurants, and more</li>
+                </ul>
+            </div>
         </section>
+
+        <!-- SERVICES -->
         <section id="services" class="glass-section">
-            <h2>Our Services</h2>
-            <div class="card-row">
-                <div class="service-card">
-                    <h3>Residential & Commercial</h3>
-                    <p>Unique interior design for homes and offices.</p>
-                </div>
-                <div class="service-card">
-                    <h3>False Ceiling & PVC Paneling</h3>
-                    <p>Modern ceiling and wall solutions.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Modular Kitchens & Wardrobes</h3>
-                    <p>Smart, space-saving modular designs.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Custom Furniture</h3>
-                    <p>Made-to-order furniture for any space.</p>
+            <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="glass-content">
+                <h2>Our Services</h2>
+                <div class="card-row">
+                    <div class="service-card">
+                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Residential & Commercial</h3>
+                            <p>Unique interior design for homes and offices.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="service-content">
+                            <h3>False Ceiling & PVC Paneling</h3>
+                            <p>Modern ceiling and wall solutions.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1503389152951-9c3d8b6e1caa?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Modular Kitchens & Wardrobes</h3>
+                            <p>Smart, space-saving modular designs.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Custom Furniture</h3>
+                            <p>Made-to-order furniture for any space.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- GALLERY -->
         <section id="gallery" class="glass-section">
-            <h2>Our Work</h2>
-            <div class="gallery-3d">
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-1.jpg" alt="Ceiling Design 1">
-                </div>
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-2.jpg" alt="Ceiling Design 2">
-                </div>
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-3.jpg" alt="Ceiling Design 3">
-                </div>
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-4.jpg" alt="Ceiling Design 4">
-                </div>          
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-5.jpg" alt="Ceiling Design 5">
-                </div>
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-6.jpg" alt="Ceiling Design 6">
-                </div>
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-7.jpg" alt="Ceiling Design 7">
-                </div>
-                <div class="gallery-card">
-                    <img src="images/pvc_designs-8.jpg" alt="Ceiling Design 8">
+            <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="glass-content">
+                <h2>Our Work</h2>
+                <div class="gallery-3d">
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-1.jpg" alt="Ceiling Design 1">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-2.jpg" alt="Ceiling Design 2">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-3.jpg" alt="Ceiling Design 3">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-4.jpg" alt="Ceiling Design 4">
+                    </div>          
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-5.jpg" alt="Ceiling Design 5">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-6.jpg" alt="Ceiling Design 6">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-7.jpg" alt="Ceiling Design 7">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pvc_designs-8.jpg" alt="Ceiling Design 8">
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- CONTACT -->
         <section id="contact" class="glass-section">
-            <h2>Contact Us</h2>
-            <p>
-                <strong>Address:</strong> 596m/391, near Chetna Public Inter College, Adarsh Nagar, Dubagga, Lucknow, Uttar Pradesh 226003<br>
-                <strong>Phone:</strong> +918418944572<br>
-                <strong>Email:</strong> mdzubair7753@gmail.com
-            </p>
-            <p>
-                <strong>Business Hours:</strong> Mon-Sat, 9:00 AM – 7:00 PM<br>
-            </p>
-            <p>
-                <a href="https://maps.app.goo.gl/ayRbrBeFzw9GSDCeA" target="_blank">Find us on Google Maps</a>
-            </p>
+            <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="glass-content">
+                <h2>Contact Us</h2>
+                <p>
+                    <strong>Address:</strong> 596m/391, near Chetna Public Inter College, Adarsh Nagar, Dubagga, Lucknow, Uttar Pradesh 226003<br>
+                    <strong>Phone:</strong> +918418944572<br>
+                    <strong>Email:</strong> mdzubair7753@gmail.com
+                </p>
+                <p>
+                    <strong>Business Hours:</strong> Mon-Sat, 9:00 AM – 7:00 PM<br>
+                </p>
+                <p>
+                    <a href="https://maps.app.goo.gl/ayRbrBeFzw9GSDCeA" target="_blank" style="color:#FFD700;">Find us on Google Maps</a>
+                </p>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 Awadh Interior Designing. All rights reserved.</p>
+
+    <!-- FOOTER -->
+    <footer class="glass-section">
+        <div class="glass-bg" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="glass-content">
+            <p>&copy; 2025 Awadh Interior Designing. All rights reserved.</p>
+        </div>
     </footer>
+
     <script>
         // Lightbox functionality
         document.addEventListener('DOMContentLoaded', () => {
