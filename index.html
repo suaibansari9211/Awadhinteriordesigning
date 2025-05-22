@@ -7,60 +7,43 @@
     <!-- Unique 3D Font for Title -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <style>
-        /* Blurred, stretched, and dimmed background image */
-        .bg-blur {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2;
-            background: url('images/pvc_designs-1.jpg') no-repeat center center fixed;
-            background-size: 100% 100%; /* Stretches image to fill, even if small */
-            filter: blur(48px); /* Extreme blur */
-            -webkit-filter: blur(48px);
-            pointer-events: none;
-        }
-        /* White overlay to dim the background */
-        .bg-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(255,255,255,0.7);
-            z-index: -1;
-            pointer-events: none;
-        }
+        /* Site-wide background image */
         body {
-            position: relative;
             min-height: 100vh;
-            background: transparent;
+            margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
             color: #9c7e36;
+            background: url('images/pvc_designs-1.jpg') center center/cover no-repeat fixed;
         }
-        .glass-section {
-            background: rgba(255,255,255,0.85);
+
+        /* Glassmorphism/frosted effect on boxes */
+        .glass-section, header, nav, footer {
+            background: rgba(255,255,255,0.6);
             border-radius: 18px;
             border: 1.5px solid #FFD700;
-            margin: 2rem auto;
+            margin: 2rem auto 2rem auto;
             padding: 2rem;
             max-width: 1100px;
             box-shadow: 0 2px 24px #FFD70022;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
         }
         header {
-            background: rgba(255,255,255,0.85);
             text-align: center;
-            padding: 2rem 0 1rem 0;
+            padding: 2.5rem 0 1.5rem 0;
             border-bottom: 2px solid #FFD700;
-            backdrop-filter: blur(4px);
         }
         .main-3d-title {
             font-family: 'Orbitron', Arial, sans-serif;
             font-size: 4rem;
             font-weight: 900;
             letter-spacing: 0.08em;
-            color: #FFD700; /* Gold */
+            color: #FFD700;
             text-transform: uppercase;
             text-align: center;
             line-height: 1.1;
-            /* 3D effect with multiple shadows */
             text-shadow:
                 0 1px 0 #bfa14a,
                 0 2px 0 #bfa14a,
@@ -71,9 +54,8 @@
             transform: perspective(400px) rotateX(8deg);
         }
         @media (max-width: 700px) {
-            .main-3d-title {
-                font-size: 2.2rem;
-            }
+            .main-3d-title { font-size: 2.2rem; }
+            .glass-section, header, nav, footer { padding: 1.2rem; }
         }
         header p {
             margin: 0.5rem 0 0 0;
@@ -81,11 +63,11 @@
             color: #bfa14a;
         }
         nav {
-            background: rgba(255,255,255,0.8);
             text-align: center;
             padding: 0.7rem 0;
             border-bottom: 1px solid #FFD700;
-            backdrop-filter: blur(4px);
+            margin: 2rem auto 0 auto;
+            backdrop-filter: blur(8px);
         }
         nav a {
             color: #bfa14a;
@@ -95,16 +77,9 @@
             font-size: 1.1rem;
             transition: color 0.2s;
         }
-        nav a:hover {
-            color: #FFD700;
-        }
-        h2, h3 {
-            color: #bfa14a;
-            margin-top: 0;
-        }
-        ul {
-            padding-left: 1.3rem;
-        }
+        nav a:hover { color: #FFD700; }
+        h2, h3 { color: #bfa14a; margin-top: 0; }
+        ul { padding-left: 1.3rem; }
         .card-row {
             display: flex;
             flex-wrap: wrap;
@@ -119,11 +94,11 @@
             padding: 1.5rem 1rem;
             border-radius: 16px;
             text-align: center;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.7);
             border: 1.5px solid #FFD700;
             box-shadow: 0 2px 12px #FFD70022;
             transition: transform 0.2s;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(8px);
         }
         .service-card:hover {
             transform: scale(1.05);
@@ -148,9 +123,9 @@
             border: 2px solid #FFD700;
             box-shadow: 0 2px 16px #FFD70033;
             transition: transform 0.3s, box-shadow 0.3s;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.7);
             cursor: pointer;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(8px);
         }
         .gallery-card:hover {
             transform: scale(1.06);
@@ -163,17 +138,15 @@
             border-radius: 12px;
             transition: transform 0.3s;
         }
-        .gallery-card:hover img {
-            transform: scale(1.08);
-        }
+        .gallery-card:hover img { transform: scale(1.08); }
         footer {
-            background: rgba(255,255,255,0.85);
             color: #bfa14a;
             text-align: center;
             padding: 1rem 0;
             border-top: 2px solid #FFD700;
             font-size: 1rem;
-            backdrop-filter: blur(4px);
+            margin: 2rem auto 0 auto;
+            backdrop-filter: blur(8px);
         }
         #lightbox-overlay {
             position: fixed;
@@ -199,9 +172,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .glass-section {
-                padding: 1.2rem;
-            }
             .gallery-card {
                 width: 95vw;
                 max-width: 350px;
@@ -211,9 +181,6 @@
     </style>
 </head>
 <body>
-    <div class="bg-blur"></div>
-    <div class="bg-overlay"></div>
-
     <!-- Lightbox Overlay -->
     <div id="lightbox-overlay">
         <img src="" alt="Expanded Image">
@@ -242,3 +209,91 @@
                 <li>Innovative designs for homes, offices, restaurants, and more</li>
             </ul>
         </section>
+        <section id="services" class="glass-section">
+            <h2>Our Services</h2>
+            <div class="card-row">
+                <div class="service-card glass-card">
+                    <h3>Residential & Commercial</h3>
+                    <p>Unique interior design for homes and offices.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <h3>False Ceiling & PVC Paneling</h3>
+                    <p>Modern ceiling and wall solutions.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <h3>Modular Kitchens & Wardrobes</h3>
+                    <p>Smart, space-saving modular designs.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <h3>Custom Furniture</h3>
+                    <p>Made-to-order furniture for any space.</p>
+                </div>
+            </div>
+        </section>
+        <section id="gallery" class="glass-section">
+            <h2>Our Work</h2>
+            <div class="gallery-3d">
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-1.jpg" alt="Ceiling Design 1">
+                </div>
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-2.jpg" alt="Ceiling Design 2">
+                </div>
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-3.jpg" alt="Ceiling Design 3">
+                </div>
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-4.jpg" alt="Ceiling Design 4">
+                </div>          
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-5.jpg" alt="Ceiling Design 5">
+                </div>
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-6.jpg" alt="Ceiling Design 6">
+                </div>
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-7.jpg" alt="Ceiling Design 7">
+                </div>
+                <div class="gallery-card glass-card">
+                    <img src="images/pvc_designs-8.jpg" alt="Ceiling Design 8">
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="glass-section">
+            <h2>Contact Us</h2>
+            <p>
+                <strong>Address:</strong> 596m/391, near Chetna Public Inter College, Adarsh Nagar, Dubagga, Lucknow, Uttar Pradesh 226003<br>
+                <strong>Phone:</strong> +918418944572<br>
+                <strong>Email:</strong> mdzubair7753@gmail.com
+            </p>
+            <p>
+                <strong>Business Hours:</strong> Mon-Sat, 9:00 AM – 7:00 PM<br>
+            </p>
+            <p>
+                <a href="https://maps.app.goo.gl/ayRbrBeFzw9GSDCeA" target="_blank">Find us on Google Maps</a>
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Awadh Interior Designing. All rights reserved.</p>
+    </footer>
+    <script>
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.getElementById('lightbox-overlay');
+            const lightboxImage = lightbox.querySelector('img');
+            const galleryImages = document.querySelectorAll('.gallery-card img');
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImage.src = img.src;
+                    lightbox.style.display = 'flex';
+                });
+            });
+            lightbox.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+                lightboxImage.src = '';
+            });
+        });
+    </script>
+</body>
+</html>
