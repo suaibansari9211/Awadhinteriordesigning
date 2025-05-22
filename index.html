@@ -7,33 +7,51 @@
     <!-- Unique 3D Font for Title -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <style>
-        /* Site-wide background image */
-        body {
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            color: #9c7e36;
-            background: url('images/pvc_designs-1.jpg') center center/cover no-repeat fixed;
+        /* Blurred, stretched background image */
+        .bg-blur {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            background: url('images/pvc_designs-3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(32px); /* Minimal blur */
+            -webkit-filter: blur(16px);
+            pointer-events: none;
         }
-
-        /* Glassmorphism/frosted effect on boxes */
-        .glass-section, header, nav, footer {
-            background: rgba(255,255,255,0.6);
+        /* Slight dark overlay for better contrast */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.3);
+            z-index: -1;
+            pointer-events: none;
+        }
+        body {
+            position: relative;
+            min-height: 100vh;
+            background: transparent;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #fff; /* Light text for visibility */
+        }
+        .glass-section {
+            background: rgba(255,255,255,0.12);
             border-radius: 18px;
             border: 1.5px solid #FFD700;
-            margin: 2rem auto 2rem auto;
+            margin: 2rem auto;
             padding: 2rem;
             max-width: 1100px;
             box-shadow: 0 2px 24px #FFD70022;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            position: relative;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #fff;
         }
         header {
+            background: rgba(255,255,255,0.15);
             text-align: center;
-            padding: 2.5rem 0 1.5rem 0;
+            padding: 2rem 0 1rem 0;
             border-bottom: 2px solid #FFD700;
+            backdrop-filter: blur(6px);
+            color: #fff;
         }
         .main-3d-title {
             font-family: 'Orbitron', Arial, sans-serif;
@@ -60,25 +78,25 @@
         header p {
             margin: 0.5rem 0 0 0;
             font-size: 1.2rem;
-            color: #bfa14a;
+            color: #fff;
         }
         nav {
+            background: rgba(255,255,255,0.10);
             text-align: center;
             padding: 0.7rem 0;
             border-bottom: 1px solid #FFD700;
-            margin: 2rem auto 0 auto;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
         }
         nav a {
-            color: #bfa14a;
+            color: #FFD700;
             text-decoration: none;
             margin: 0 1.5rem;
             font-weight: bold;
             font-size: 1.1rem;
             transition: color 0.2s;
         }
-        nav a:hover { color: #FFD700; }
-        h2, h3 { color: #bfa14a; margin-top: 0; }
+        nav a:hover { color: #fff; }
+        h2, h3 { color: #FFD700; margin-top: 0; }
         ul { padding-left: 1.3rem; }
         .card-row {
             display: flex;
@@ -94,11 +112,12 @@
             padding: 1.5rem 1rem;
             border-radius: 16px;
             text-align: center;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.15);
             border: 1.5px solid #FFD700;
             box-shadow: 0 2px 12px #FFD70022;
             transition: transform 0.2s;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
+            color: #fff;
         }
         .service-card:hover {
             transform: scale(1.05);
@@ -123,9 +142,10 @@
             border: 2px solid #FFD700;
             box-shadow: 0 2px 16px #FFD70033;
             transition: transform 0.3s, box-shadow 0.3s;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.15);
             cursor: pointer;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
+            color: #fff;
         }
         .gallery-card:hover {
             transform: scale(1.06);
@@ -140,19 +160,20 @@
         }
         .gallery-card:hover img { transform: scale(1.08); }
         footer {
-            color: #bfa14a;
+            background: rgba(255,255,255,0.13);
+            color: #FFD700;
             text-align: center;
             padding: 1rem 0;
             border-top: 2px solid #FFD700;
             font-size: 1rem;
             margin: 2rem auto 0 auto;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
         }
         #lightbox-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: rgba(255, 255, 255, 0.97);
+            background: rgba(0,0,0,0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -181,6 +202,9 @@
     </style>
 </head>
 <body>
+    <div class="bg-blur"></div>
+    <div class="bg-overlay"></div>
+
     <!-- Lightbox Overlay -->
     <div id="lightbox-overlay">
         <img src="" alt="Expanded Image">
