@@ -1,22 +1,46 @@
+/* Blurred Fullscreen Background */
+.bg-blur {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: url('images/background.jpg') center center/cover no-repeat;
+    filter: blur(8px);
+    z-index: -2;
+}
+
+/* Main content on top */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    background: #fff;
-    color: #9c7e36; /* Subtle gold for text */
+    background: transparent;
+    color: #9c7e36;
+    min-height: 100vh;
+}
+
+/* Glassmorphism effect for sections */
+.glass-section {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    border: 1.5px solid #FFD700;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1100px;
+    box-shadow: 0 2px 24px #FFD70022;
+    backdrop-filter: blur(6px); /* Glassy effect */
 }
 
 header {
-    background: #fff;
+    background: rgba(255,255,255,0.85);
     color: #FFD700;
     text-align: center;
     padding: 2rem 0 1rem 0;
     border-bottom: 2px solid #FFD700;
+    backdrop-filter: blur(4px);
 }
 
 header h1 {
     margin: 0;
     font-size: 2.5rem;
-    letter-spacing: 2px;
     color: #9c7e36;
     text-shadow: 0 2px 16px #FFD70033;
 }
@@ -28,10 +52,11 @@ header p {
 }
 
 nav {
-    background: #fff;
+    background: rgba(255,255,255,0.8);
     text-align: center;
     padding: 0.7rem 0;
     border-bottom: 1px solid #FFD700;
+    backdrop-filter: blur(4px);
 }
 
 nav a {
@@ -45,21 +70,6 @@ nav a {
 
 nav a:hover {
     color: #FFD700;
-}
-
-main {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.glass-section {
-    background: rgba(255, 215, 0, 0.05); /* very light gold */
-    border: 1.5px solid #FFD700;
-    border-radius: 18px;
-    padding: 2rem 2rem 1.5rem 2rem;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 2px 8px #FFD70022;
 }
 
 h2, h3 {
@@ -86,10 +96,11 @@ ul {
     padding: 1.5rem 1rem;
     border-radius: 16px;
     text-align: center;
-    background: #fff;
+    background: rgba(255,255,255,0.8);
     border: 1.5px solid #FFD700;
     box-shadow: 0 2px 12px #FFD70022;
     transition: transform 0.2s;
+    backdrop-filter: blur(2px);
 }
 
 .service-card:hover {
@@ -117,8 +128,9 @@ ul {
     border: 2px solid #FFD700;
     box-shadow: 0 2px 16px #FFD70033;
     transition: transform 0.3s, box-shadow 0.3s;
-    background: #fff;
+    background: rgba(255,255,255,0.8);
     cursor: pointer;
+    backdrop-filter: blur(2px);
 }
 
 .gallery-card:hover {
@@ -139,14 +151,16 @@ ul {
 }
 
 footer {
-    background: #fff;
+    background: rgba(255,255,255,0.85);
     color: #bfa14a;
     text-align: center;
     padding: 1rem 0;
     border-top: 2px solid #FFD700;
     font-size: 1rem;
+    backdrop-filter: blur(4px);
 }
 
+/* Lightbox overlay */
 #lightbox-overlay {
     position: fixed;
     top: 0; left: 0;
